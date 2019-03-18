@@ -69,8 +69,6 @@ function sensors_output(data) {
 						var elem = document.getElementById(id);
 						elem.innerHTML = bits[1];
 					}
-					temp_crit.innerHTML = "65.0";
-					temp_max.innerHTML = "55.0";
 					if (parseFloat(temp_current.innerHTML) >= parseFloat(temp_crit.innerHTML)) {
 						temp_current.className = "crit";
 					} else if (parseFloat(temp_current.innerHTML) >= parseFloat(temp_max.innerHTML)) {
