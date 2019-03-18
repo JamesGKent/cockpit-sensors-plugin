@@ -1,0 +1,17 @@
+#sensors-table,
+#sensors-table th, 
+#sensors-table td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 0.5em;
+}
+
+.max {
+	color: orange;
+	font-weight: bold;
+}
+
+.crit {
+	color: red;
+	font-weight: bold;
+}
