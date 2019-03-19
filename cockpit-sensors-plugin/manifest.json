@@ -1,0 +1,12 @@
+{
+    "version": 0,
+
+    "tools": {
+        "sensors": {
+            "label": "Sensors",
+            "path": "sensors.html"
+        }
+    },
+
+    "content-security-policy": "default-src 'self'"
+}
