@@ -14,6 +14,8 @@ function sensors_output(data) {
 	var table = document.getElementById("sensors-table");
 	
 	var current_adaptor = null;
+	var current_cpu = 0;
+	var current_gpu = 0;
 	var current_core = null;
 	
 	var lines = data.split('\n');
@@ -30,13 +32,35 @@ function sensors_output(data) {
 					var row = table.insertRow(-1);
 					row.innerHTML = "<td></td><td>Current</td><td>Max.</td><td>Crit.</td>";
 				}
-			}
+			} else if (lines[i].startsWith('k10temp')) {
+				current_adaptor = 'CPU' + current_cpu;
+				if (init == false) {
+					var row = table.insertRow(-1);
+					var header = document.createElement("TH");
+					header.innerHTML = current_adaptor;
+					header.colSpan = "4";
+					row.append(header);
+					var row = table.insertRow(-1);
+					row.innerHTML = "<td></td><td>Current</td><td>Max.</td><td>Crit.</td>";
+				}	
+			} else if (lines[i].startsWith('radeon')) {
+				current_adaptor = 'GPU' + current_gpu;
+				if (init == false) {
+					var row = table.insertRow(-1);
+					var header = document.createElement("TH");
+					header.innerHTML = current_adaptor;
+					header.colSpan = "4";
+					row.append(header);
+					var row = table.insertRow(-1);
+					row.innerHTML = "<td></td><td>Current</td><td>Max.</td><td>Crit.</td>";
+				}	
+			} 
 		} else if (lines[i] == '') {
 			current_adaptor = null;
 			current_core = null;
 		} else {
 			if (current_adaptor != null) {
-				if (lines[i].startsWith('Core')) {
+				if (lines[i].startsWith('Core') || lines[i].startsWith('temp')) {
 					current_core = lines[i].replace(':', '');
 					if (init == false) {
 						var row = table.insertRow(-1);
