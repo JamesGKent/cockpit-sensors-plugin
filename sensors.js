@@ -54,6 +54,17 @@ function sensors_output(data) {
 					var row = table.insertRow(-1);
 					row.innerHTML = "<td></td><td>Current</td><td>Max.</td><td>Crit.</td>";
 				}	
+                        } else if (lines[i].startsWith('cpu_thermal-virtual-0')) {
+                                current_adaptor = 'temp' + current_cpu;
+                                if (init == false) {
+                                        var row = table.insertRow(-1);
+                                        var header = document.createElement("TH");
+                                        header.innerHTML = current_adaptor;
+                                        header.colSpan = "4";
+                                        row.append(header);
+                                        var row = table.insertRow(-1);
+                                        row.innerHTML = "<td></td><td>Current</td><td>Max.</td><td>Crit.</td>";
+                                }
 			} 
 		} else if (lines[i] == '') {
 			current_adaptor = null;
