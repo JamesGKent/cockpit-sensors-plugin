@@ -84,7 +84,7 @@ function sensors_output(data) {
 						var temp_crit = row.insertCell(-1);
 						temp_crit.id = current_adaptor + '-' + current_core + '-crit';
 					}
-				} else if (lines[i].startsWith(" ")) {
+				} else if (lines[i].startsWith(" ") && current_core != null) {
 					var bits = lines[i].split(":");
 					var id = current_adaptor + '-' + current_core + '-current';
 					var temp_current = document.getElementById(id);
