@@ -6,6 +6,10 @@
   padding: 0.5em;
 }
 
+#sensors-table {
+	margin-top: 1.5em;
+}
+
 .max {
 	color: orange;
 	font-weight: bold;
